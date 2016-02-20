@@ -10,6 +10,6 @@ class Flight extends Model
 
     public function votes()
     {
-        $this->hasMany(Vote::class);
+        return $this->hasMany(Vote::class);
     }
 }

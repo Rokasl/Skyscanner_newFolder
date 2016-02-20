@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
+
+    public function flights()
+    {
+        return $this->hasMany(Flight::class);
+    }
+
     public function refresh()
     {
         $s = SkyScanner::getCheapest($this->from);
@@ -34,6 +40,7 @@ class Group extends Model
                     $flight->to = $place->name;
                 }
             }
+            $flight->save();
 
         }
 

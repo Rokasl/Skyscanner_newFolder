@@ -73,9 +73,11 @@ class IndexController extends Controller
                 }
             }
 
+            $flight->save();
+
         }
 
-        return redirect()->action('IndexController@show', $group->public_id);
+        return redirect()->action('IndexController@showGroup', $group->public_id);
     }
 
     /**
@@ -84,15 +86,16 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showGroup($id)
     {
 
 
-        return 'lol';
 
         $group = Group::wherePublicId($id)->first();
 
-        return view();
+        return view('results', [
+            'data' => $group
+        ]);
     }
 
     /**

@@ -18,32 +18,41 @@
 
                     <div class="panel-body">
 
+
                         <div class="panel-body">
-                            <div class="row">
+
+                            <div class="row result mb15">
+                                <div class="col-md-1">
+
+                                </div>
+                                <div class="col-md-3">
+                                    <p>Destination</p>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <p>Date</p>
+                                </div>
+
                                 <div class="col-md-2">
-                                    <button type="button"
-                                            id="testBtn"
-                                            class="btn btn-success fa-thumbs-up"
-                                            data-loading-text=" ... ">
-                                        4</button>
-                                </div>
-                                <div class="col-md-3">
-                                    <h4>Where!</h4>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <h4>Date</h4>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <h4>Price</h4>
+                                    <p>Price</p>
                                 </div>
                                 <div class="col-md-1">
-                                    <button type="button" id="testBtnDown" class="btn btn-danger fa-thumbs-down" data-loading-text=" ... ">
-                                        4</button>
+
                                 </div>
 
                             </div>
+
+                        </div>
+
+                        <div class="panel-body">
+
+
+                            @foreach($data->flights as $flight)
+
+                                @include('partials.result-row')
+
+                            @endforeach
+
 
                         </div>
 

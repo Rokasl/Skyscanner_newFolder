@@ -22,6 +22,8 @@
 |
 */
 Route::resource('/', 'IndexController');
+Route::get('/s/{id}', 'IndexController@showGroup');
+
 Route::resource('/result', 'ResultController');
 
 Route::group(['middleware' => ['web']], function () {

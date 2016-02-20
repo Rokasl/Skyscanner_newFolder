@@ -21,7 +21,6 @@ class IndexController extends Controller
      */
     public function index()
     {
-
         return view('index', [
 
         ]);
@@ -88,7 +87,6 @@ class IndexController extends Controller
      */
     public function showGroup($id)
     {
-
 
 
         $group = Group::wherePublicId($id)->first();

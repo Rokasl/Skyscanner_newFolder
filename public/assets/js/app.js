@@ -64,4 +64,23 @@ $('.remote-selector').selectize({
         });
     }
 });
+
+
+$('[data-upvote]').on('click', function () {
+    $.ajax({
+        url: '/api/add-vote',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            flight_id: $(this).attr('data-upvote'),
+        },
+        error: function () {
+            console.log('error');
+        },
+        success: function (res) {
+
+            console.log('success');
+        }
+    });
+});
 //# sourceMappingURL=app.js.map

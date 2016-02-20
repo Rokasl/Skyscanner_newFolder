@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>@yield('title') TravelScanner</title>
 	<meta name="csrf-token" content="{{ Session::token() }}">
 
+	<meta property="og:url"           content="{{\Request::url()}}" />
+	<meta property="og:type"          content="Flight finder" />
+	<meta property="og:title"         content="Scanner for Skies " />
+	<meta property="og:description"   content="Find and share" />
+	<meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
+
 	<link href="{{ asset('/assets/css/app.css') }}" rel="stylesheet">
+
 	<link href='https://fonts.googleapis.com/css?family=Lato:100,400,300,700' rel='stylesheet' type='text/css'>
 	<!-- Fonts -->
 	<!-- DataTables CSS -->

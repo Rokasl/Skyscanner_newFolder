@@ -12,7 +12,15 @@
 
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <h3> Results </h3>
+
+                            <h3> Results
+                                <div style="float:right;"><a href="https://twitter.com/share" class="twitter-share-button" data-size="small">Tweet</a>
+                                <div class="fb-share-button"
+                                     data-href="{{\Request::url()}}"
+                                     data-layout="button_count">
+                                </div>
+                                </div></h3>
+
                         </div>
 
                     </div>
@@ -118,31 +126,6 @@
 @endsection
 
 @section('javascript')
-<script>
-    $('#testBtn').click(function () {
-        var cnt=4;
-        var btn = $(this);
-        btn.button('loading');
-        setTimeout(function () {
-            cnt++;
-            btn.button('reset');
-            btn.text('  ' + cnt);
-        }, 1000);
-    });
-
-    $('#testBtnDown').click(function () {
-        var cnt=4;
-        var btn = $(this);
-        btn.button('loading');
-        setTimeout(function () {
-            if (cnt > 0) {
-                cnt--;
-            }
-            btn.button('reset');
-            btn.text('  ' + cnt);
-        }, 1000);
-    });
-</script>
 
 <script>
     /* Hit enter to submit comment */
@@ -179,7 +162,15 @@
 
 
 </script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
 @endsection
 

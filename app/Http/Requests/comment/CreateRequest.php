@@ -12,7 +12,7 @@ class CreateRequest extends Request {
      * @return bool
      */
     public function authorize() {
-      return false;
+      return true;
     }
 
     /**
@@ -23,6 +23,7 @@ class CreateRequest extends Request {
     public function rules() {
         return [
             'text'    => 'required',
+            'group_id' => 'required',
         ];
     }
 

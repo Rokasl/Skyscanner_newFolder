@@ -10,7 +10,7 @@ class Comment extends Model
     protected $connection = "mysql";
 
     protected $fillable = [
-        'name', 'text',
+        'name', 'text', 'group_id'
     ];
 
     public function group()

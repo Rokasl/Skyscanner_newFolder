@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Facades\SkyScanner;
 use App\Flight;
 use App\Group;
+use App\Comment;
 use App\Subscription;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -90,9 +91,10 @@ class IndexController extends Controller
 
 
         $group = Group::wherePublicId($id)->first();
-
+        $comments = $group->comments();
         return view('results', [
-            'data' => $group
+            'data' => $group,
+            'comments' => $comments,
         ]);
     }
 

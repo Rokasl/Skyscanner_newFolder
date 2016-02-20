@@ -50,7 +50,7 @@
                             @foreach($data->flights as $flight)
 
                                 @include('partials.result-row')
-
+                                <hr>
                             @endforeach
 
 
@@ -73,8 +73,16 @@
                     </div>
                      <div class="panel-body">
                       <div class="panel-body">
-                          MESSAGE
+                          @foreach($comments as $comment)
+                              {{$comment->text}}
+                          @endforeach
                       </div>
+                       <div class="panel-body">
+                           <?= BootForm::open()->post()->action(action('CommentsController@store', $data->id)) ?>
+                               {!! BootForm::text('Message', 'text') !!}
+                               {!! BootForm::submit('Submit!', 'btn btn-primary btn-block') !!}
+                           <?= Bootform::close() ?>
+                       </div>
 
 
                      </div>

@@ -74,7 +74,8 @@
                      <div class="panel-body">
                       <div class="panel-body">
                           @foreach($comments as $comment)
-                              {{$comment->text}}
+                              <p>{{$comment->text}}</p>
+                              <hr>
                           @endforeach
                       </div>
                        <div class="panel-body">

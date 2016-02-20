@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Subscription;
+use App\Comment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\SkyScanner;
 use App\Subscription;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -18,6 +19,10 @@ class IndexController extends Controller
      */
     public function index()
     {
+
+
+        dd($s = SkyScanner::getCheapest(null, null));
+
         return view('index', [
 
         ]);

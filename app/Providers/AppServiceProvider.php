@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('skyscanner.utils', function () {
+        $this->app->bind('sky.utils', function () {
             $api_key = 'ah157133207656443122789513994939';
 
             return new SkyScannerFacade($api_key);

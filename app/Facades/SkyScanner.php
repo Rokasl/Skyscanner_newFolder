@@ -10,7 +10,7 @@ class SkyScanner extends Facade
 	 */
 	protected static function getFacadeAccessor()
 	{
-		return 'thomascook.utils';
+		return 'sky.utils';
 	}
 
 }

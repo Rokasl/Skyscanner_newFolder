@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "hash": "1d793414b0b197547d2073379ce5a5a5",
+    "content-hash": "e793bbf2f83be6a951b0b9b7a2a2d85c",
     "packages": [
         {
             "name": "adamwathan/bootforms",

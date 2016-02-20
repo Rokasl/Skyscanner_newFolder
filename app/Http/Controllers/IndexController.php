@@ -20,9 +20,6 @@ class IndexController extends Controller
     public function index()
     {
 
-
-        dd($s = SkyScanner::getCheapest(null, null));
-
         return view('index', [
 
         ]);

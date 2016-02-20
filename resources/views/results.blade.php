@@ -108,7 +108,7 @@
                     <div class="panel-body">
                         <div class="comments" id="chat" style="height:200px; overflow:auto;">
                             @foreach($comments as $comment)
-                                <p>{{$comment->text}}</p>
+                                <p>{{$comment->text}}<small style="float:right;">{{ $comment->created_at->diffForHumans() }}</small></p>
                                 <hr>
                             @endforeach
                         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\SkyScanner;
 use App\Flight;
 use App\Vote;
 use Illuminate\Http\Request;
@@ -26,5 +27,12 @@ class ApiController extends Controller
             return response('Already voted', '401');
         }
 
+    }
+
+
+    public function showDestinations(Request $request)
+    {
+
+        return SkyScanner::destination($request->get('q'))->Places;
     }
 }

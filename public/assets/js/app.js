@@ -20,5 +20,48 @@
  * http://blog.stevenlevithan.com/archives/cross-browser-split
  */
 var nativeSplit=String.prototype.split,compliantExecNpcg=void 0===/()??/.exec("")[1];String.prototype.split=function(a,b){var c=this;if("[object RegExp]"!==Object.prototype.toString.call(a))return nativeSplit.call(c,a,b);var d,e,f,g,h=[],i=(a.ignoreCase?"i":"")+(a.multiline?"m":"")+(a.extended?"x":"")+(a.sticky?"y":""),j=0;for(a=new RegExp(a.source,i+"g"),c+="",compliantExecNpcg||(d=new RegExp("^"+a.source+"$(?!\\s)",i)),b=void 0===b?-1>>>0:b>>>0;(e=a.exec(c))&&(f=e.index+e[0].length,!(f>j&&(h.push(c.slice(j,e.index)),!compliantExecNpcg&&e.length>1&&e[0].replace(d,function(){for(var a=1;a<arguments.length-2;a++)void 0===arguments[a]&&(e[a]=void 0)}),e.length>1&&e.index<c.length&&Array.prototype.push.apply(h,e.slice(1)),g=e[0].length,j=f,h.length>=b)));)a.lastIndex===e.index&&a.lastIndex++;return j===c.length?(g||!a.test(""))&&h.push(""):h.push(c.slice(j)),h.length>b?h.slice(0,b):h};
-$('.datepicker').pickadate()
+
+
+
+
+$('.remote-selector').selectize({
+    plugins: ['remove_button'],
+    valueField: 'PlaceId',
+    labelField: 'PlaceName',
+    searchField: ['PlaceId', 'CountryName', 'CityId', 'PlaceName'],
+    options: [],
+    persist: false,
+    loadThrottle: 300,
+    create: false,
+    allowEmptyOption: false,
+    preload: 'focus',
+    render: {
+        option: function(item, escape) {
+
+            console.log(item);
+            return '<div class="question-selector">' +
+                '<span class="title">' +
+                '<span class="name"><i style="color: #2b1bb9" class="fa fa-fighter-jet"></i> <b>' + escape(item.CountryName) + '</b>,  ' + escape(item.PlaceName) + '</span>' +
+                '</span>' +
+                '</div>';
+        }
+    },
+    load: function (query, callback) {
+
+        $.ajax({
+            url: '/api/search-destination',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                q: query,
+            },
+            error: function () {
+                callback();
+            },
+            success: function (res) {
+                callback(res);
+            }
+        });
+    }
+});
 //# sourceMappingURL=app.js.map

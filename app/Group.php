@@ -19,7 +19,7 @@ class Group extends Model
 
             $flight = new Flight();
             $flight->group_id = $this->id;
-            $flight->quote_id = $this->id;
+            $flight->quote_id = $quote->QuoteId;
             $flight->price = $quote->MinPrice;
             $flight->dateFrom = Carbon::parse($quote->OutboundLeg->DepartureDate);
             $flight->dateTo = Carbon::parse($quote->InboundLeg->DepartureDate);

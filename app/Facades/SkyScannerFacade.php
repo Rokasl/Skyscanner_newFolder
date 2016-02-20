@@ -36,6 +36,12 @@ class SkyScannerFacade
 		return json_decode($res->getBody());
 	}
 
+	public function destination($query) {
+		$res = $this->client->get('http://partners.api.skyscanner.net/apiservices/autosuggest/v1.0/GB/GBP/en-GB?query='. $query .'&apiKey=' .$this->apiKey, [ ]);
+
+		return json_decode($res->getBody());
+	}
+
 
 
 }

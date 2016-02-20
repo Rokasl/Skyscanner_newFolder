@@ -29,3 +29,4 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 Route::post('/api/add-vote', 'ApiController@addVoteForFlight');
+Route::get('/api/search-destination', 'ApiController@showDestinations');

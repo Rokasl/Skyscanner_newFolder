@@ -27,32 +27,6 @@
 	<![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle Navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">TravelScanner</a>
-			</div>
-
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Home</a></li>
-
-
-				</ul>
-
-			</div>
-
-
-			</ul>
-		</div>
-	</nav>
-
 
 	@yield('content')
 	<!-- Scripts -->
@@ -65,6 +39,7 @@
 	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/plug-ins/1.10.10/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/tabletools/2.2.0/js/dataTables.tableTools.min.js"></script>
 	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/colvis/1.1.0/js/dataTables.colVis.min.js"></script>
+	<script src="{{ asset('/assets/selectisize.js') }}"></script>
 	<script src="{{ asset('/assets/js/app.js') }}"></script>
 	<!-- Additional Scripts -->
 	@section('javascript')

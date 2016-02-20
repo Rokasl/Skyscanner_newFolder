@@ -147,6 +147,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        'AdamWathan\BootForms\BootFormsServiceProvider',
 
         /*
          * Application Service Providers...
@@ -156,7 +157,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\ExtensionServiceProvider::class,
-        'AdamWathan\BootForms\BootFormsServiceProvider',
 
     ],
 

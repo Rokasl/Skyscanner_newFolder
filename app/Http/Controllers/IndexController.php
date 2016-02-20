@@ -44,19 +44,20 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        $s = SkyScanner::getCheapest('LON');
-
         $group = new Group();
 
         $group->public_id = strtoupper(str_random(5));
-        $group->name = $request->get('name');
-        $group->from = $request->get('from');
+        $group->name = $request->get('name', 'lol');
+        $group->from = str_replace('-sky',  '', $request->get('from'));
         $group->save();
 
+        $s = SkyScanner::getCheapest($group->from);
+
         foreach ($s->Quotes as $quote) {
+
             $flight = new Flight();
             $flight->group_id = $group->id;
-            $flight->quote_id = $quote->id;
+            $flight->quote_id = $quote->QuoteId;
             $flight->price = $quote->MinPrice;
             $flight->dateFrom = Carbon::parse($quote->OutboundLeg->DepartureDate);
             $flight->dateTo = Carbon::parse($quote->InboundLeg->DepartureDate);
@@ -65,16 +66,16 @@ class IndexController extends Controller
 
             foreach ($s->Places as $place) {
                 if ($place->PlaceId == $flight->from_id) {
-                    $flight->from = $place->name;
+                    $flight->from = $place->Name;
                 }
                 if ($place->PlaceId == $flight->to_id) {
-                    $flight->to = $place->name;
+                    $flight->to = $place->Name;
                 }
             }
 
         }
 
-        return redirect()->action('IndexController@show', $group->id);
+        return redirect()->action('IndexController@show', $group->public_id);
     }
 
     /**
@@ -86,7 +87,10 @@ class IndexController extends Controller
     public function show($id)
     {
 
-        Group::find($id);
+
+        return 'lol';
+
+        $group = Group::wherePublicId($id)->first();
 
         return view();
     }

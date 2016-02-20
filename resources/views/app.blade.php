@@ -8,12 +8,8 @@
 	<meta name="csrf-token" content="{{ Session::token() }}">
 
 	<link href="{{ asset('/assets/css/app.css') }}" rel="stylesheet">
-
+	<link href='https://fonts.googleapis.com/css?family=Lato:100,400,300,700' rel='stylesheet' type='text/css'>
 	<!-- Fonts -->
-	{{--<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>--}}
-
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-
 	<!-- DataTables CSS -->
 	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
 	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/1.10.10/integration/bootstrap/3/dataTables.bootstrap.css">

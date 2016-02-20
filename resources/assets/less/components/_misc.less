@@ -66,9 +66,8 @@ body {
 }
 
 h1, h3  {
-	color: white;
-
-
+	color: @brand-sky;
+	font-family: 'Lato', sans-serif;
 }
 
 h1 {
@@ -77,11 +76,12 @@ h1 {
 
 h3 {
 	font-size: 2em;
-	font-weight: 100;
+	font-weight: 400;
+	margin: 8px -5px;
 }
 
 label {
-	color: white !important;
+	color: @brand-sky !important;
 }
 hr {
 	margin: 15px 0;
@@ -100,4 +100,8 @@ hr {
 }
 .smaller{
 	font-size: smaller;
+}
+
+.panel-heading {
+	border-radius: 0px;
 }

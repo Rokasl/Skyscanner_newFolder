@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class IndexController extends Controller
 {
@@ -91,7 +92,13 @@ class IndexController extends Controller
     public function showGroup($id)
     {
 
+
         $group = Group::wherePublicId($id)->first();
+
+        if (Input::has('refresh')) {
+            $group->refresh();
+        }
+
         $comments = $group->comments()->get();
         return view('results', [
             'data' => $group,

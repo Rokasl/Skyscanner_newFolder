@@ -14,6 +14,11 @@ class CreateVotesTable extends Migration
     {
         Schema::create('votes', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('flight_id');
+            $table->string('user_id');
+            $table->boolean('type');
+
             $table->timestamps();
         });
     }

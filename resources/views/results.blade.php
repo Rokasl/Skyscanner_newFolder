@@ -79,9 +79,10 @@
                           @endforeach
                       </div>
                        <div class="panel-body">
-                           <?= BootForm::open()->post()->action(action('CommentsController@store', $data->id)) ?>
-                               {!! BootForm::text('Message', 'text') !!}
-                               {!! BootForm::submit('Submit!', 'btn btn-primary btn-block') !!}
+                           <?= BootForm::open()->post()->action(action('CommentsController@store'))->id('chat') ?>
+                               {!! BootForm::hidden('group_id')->value($data->id) !!}
+                               {!! BootForm::text('Message', 'text')->id('text') !!}
+                               {!! BootForm::submit('Submit!', 'btn btn-primary btn-block')->id('submit') !!}
                            <?= Bootform::close() ?>
                        </div>
 
@@ -122,4 +123,8 @@
     });
 </script>
 
+
+
+
 @endsection
+

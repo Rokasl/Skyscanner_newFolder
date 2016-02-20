@@ -14,18 +14,27 @@ use App\Http\Requests\comment\CreateRequest;
 class CommentsController extends Controller
 {
 
-    public function store($group_id ,CreateRequest $request)
+    public function store(CreateRequest $request)
     {
+//        $data = $request->except( '_token');
+//
+//        $COMMENT = new Comment();
+//
+//        $COMMENT->fill( $data );
+//
+//        $COMMENT->group_id = $group_id;
+//
+//        $COMMENT->save();
+//
+//        return redirect()->back();
+
         $data = $request->except( '_token');
 
-        $COMMENT = new Comment();
+            $COMMENT = new Comment();
 
-        $COMMENT->fill( $data );
+             $COMMENT->fill( $data );
 
-        $COMMENT->group_id = $group_id;
-
-        $COMMENT->save();
-
+             $COMMENT->save();
         return redirect()->back();
     }
 

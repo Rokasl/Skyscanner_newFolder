@@ -23,6 +23,7 @@ class CreateRequest extends Request {
     public function rules() {
         return [
             'text'    => 'required',
+            'group_id' => 'required',
         ];
     }
 

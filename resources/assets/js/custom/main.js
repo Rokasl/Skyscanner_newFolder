@@ -48,7 +48,7 @@ $('.remote-selector').selectize({
 });
 
 
-$('[data-upvote]').on('click', function () {
+$(document).on('click', '[data-upvote]', function () {
     $.ajax({
         url: '/api/add-vote',
         type: 'POST',
@@ -74,7 +74,7 @@ $('[data-upvote]').on('click', function () {
 });
 
 
-$('[data-downvote]').on('click', function () {
+$(document).on('click', '[data-downvote]',  function () {
     $.ajax({
         url: '/api/add-vote',
         type: 'POST',

@@ -1,4 +1,5 @@
 @extends('app')
+@section('title', 'Flights from ' . $data->name . ' - ')
 
 @section('content')
     <div data-group="{{ $data->public_id }}"></div>

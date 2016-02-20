@@ -1,5 +1,5 @@
 @extends('app')
-
+@section('title', 'Find your next Holidays')
 @section('content')
 
     <?php use AdamWathan\BootForms\Facades\BootForm; ?>
@@ -15,7 +15,7 @@
             <?= BootForm::open()->post()->action(action('IndexController@store')) ?>
 
 
-            <?= BootForm::select('Your City', 'from')->class('remote-selector') ?>
+            <?= BootForm::select('', 'from')->class('remote-selector')->placeholder('Your City') ?>
 
             {!! BootForm::submit('GO!', 'btn btn-primary btn-block') !!}
 

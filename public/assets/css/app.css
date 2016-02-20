@@ -28874,6 +28874,9 @@ hr {
 .panel-heading {
   border-radius: 0px;
 }
+.selectize-input {
+  border-radius: 0px !important;
+}
 /**
  * selectize.css (v0.12.1)
  * Copyright (c) 2013–2015 Brian Reavis & contributors

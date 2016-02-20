@@ -8,7 +8,7 @@
 
             <div class="col-md-9">
 
-                <div class="panel panel-success">
+                <div class="panel panel-primary">
 
                     <div class="panel-heading">
                         <div class="panel-title">
@@ -48,7 +48,7 @@
                         <div class="panel-body">
 
 
-                            @foreach($data->flights as $flight)
+                            @foreach($data->getFlightsByVoteCount() as $flight)
 
                                 @include('partials.result-row')
                                 <hr>
@@ -65,8 +65,27 @@
 
             </div>
 
+
             <div class="col-md-3">
-                <div class="panel panel-success">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <h3> Info </h3>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+
+                        <p>You have searched for flights from <b>{{ $data->from }}</b> airport, we have found <b> {{ $data->flights()->count() }}</b> flights from this destination. </p>
+
+                        <p>Cheapest flight cost <b>£{{ $data->flights()->orderBy('price', 'asc')->first()->price }}</b> and most expensive one costs <b>£{{ $data->flights()->orderBy('price', 'desc')->first()->price }}.</b></p>
+
+                        <p>This board was created <b>{{ $data->created_at->diffForHumans() }}</b></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="panel-title">
                             <h3> Chat </h3>
@@ -90,7 +109,9 @@
 
                      </div>
                 </div>
-                </div>
+            </div>
+
+
 
         </div>
     </div>

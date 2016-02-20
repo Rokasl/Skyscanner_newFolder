@@ -80,7 +80,7 @@
 
                         <p>This board was created <b>{{ $data->created_at->diffForHumans() }}</b></p>
 
-                        <a class="btn btn-danger btn-block">Refresh Data!</a>
+                        <a href="?refresh=true" class="btn btn-danger btn-block">Refresh Data!</a>
                     </div>
                 </div>
             </div>

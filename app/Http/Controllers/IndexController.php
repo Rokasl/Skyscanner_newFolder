@@ -67,9 +67,11 @@ class IndexController extends Controller
             foreach ($s->Places as $place) {
                 if ($place->PlaceId == $flight->from_id) {
                     $flight->from = $place->Name;
+                    $flight->from_id = $place->IataCode;
                 }
                 if ($place->PlaceId == $flight->to_id) {
                     $flight->to = $place->Name;
+                    $flight->to_id = $place->IataCode;
                 }
             }
 
@@ -88,7 +90,6 @@ class IndexController extends Controller
      */
     public function showGroup($id)
     {
-
 
         $group = Group::wherePublicId($id)->first();
         $comments = $group->comments()->get();

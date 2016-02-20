@@ -22,7 +22,11 @@
 var nativeSplit=String.prototype.split,compliantExecNpcg=void 0===/()??/.exec("")[1];String.prototype.split=function(a,b){var c=this;if("[object RegExp]"!==Object.prototype.toString.call(a))return nativeSplit.call(c,a,b);var d,e,f,g,h=[],i=(a.ignoreCase?"i":"")+(a.multiline?"m":"")+(a.extended?"x":"")+(a.sticky?"y":""),j=0;for(a=new RegExp(a.source,i+"g"),c+="",compliantExecNpcg||(d=new RegExp("^"+a.source+"$(?!\\s)",i)),b=void 0===b?-1>>>0:b>>>0;(e=a.exec(c))&&(f=e.index+e[0].length,!(f>j&&(h.push(c.slice(j,e.index)),!compliantExecNpcg&&e.length>1&&e[0].replace(d,function(){for(var a=1;a<arguments.length-2;a++)void 0===arguments[a]&&(e[a]=void 0)}),e.length>1&&e.index<c.length&&Array.prototype.push.apply(h,e.slice(1)),g=e[0].length,j=f,h.length>=b)));)a.lastIndex===e.index&&a.lastIndex++;return j===c.length?(g||!a.test(""))&&h.push(""):h.push(c.slice(j)),h.length>b?h.slice(0,b):h};
 
 
-
+$(function () {
+    $.ajaxSetup({
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+    });
+});
 
 $('.remote-selector').selectize({
     plugins: ['remove_button'],
@@ -74,13 +78,69 @@ $('[data-upvote]').on('click', function () {
         data: {
             flight_id: $(this).attr('data-upvote'),
         },
+        success: function(data) { // 200 Status Header
+            document.dispatchEvent(new CustomEvent('updateView'));
+        },
+        error: function(data) { // 500 Status Header
+
+            console.log(data.status);
+            if (data.status == 200) {
+                document.dispatchEvent(new CustomEvent('updateView'));
+            } else {
+
+                console.log('error');
+                alert('Woops, you already voted for this');
+            }
+        },
+    });
+});
+
+
+$('[data-downvote]').on('click', function () {
+    $.ajax({
+        url: '/api/add-vote',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            flight_id: $(this).attr('data-downvote'),
+            negative: $(this).attr('data-downvote'),
+        },
+        success: function(data) { // 200 Status Header
+        },
+        error: function(data) { // 500 Status Header
+
+            if (data.status == 200) {
+                document.dispatchEvent(new CustomEvent('updateView'));
+            } else {
+
+                console.log('error');
+                alert('Woops, you already voted for this');
+            }
+
+        },
+    });
+});
+
+
+document.addEventListener('updateView', updateView, false);
+
+
+function updateView()
+{
+    $.ajax({
+        url: '/api/refresh',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            pid: $('[data-group]').attr('data-group'),
+        },
         error: function () {
-            console.log('error');
         },
         success: function (res) {
 
-            console.log('success');
+            console.log(res);
+            $('#body').empty().prepend((res.html));
         }
     });
-});
+}
 //# sourceMappingURL=app.js.map

@@ -13,6 +13,14 @@ class Group extends Model
         return $this->hasMany(Flight::class);
     }
 
+    public function  getFlightsByVoteCount()
+    {
+        return $this->flights->sortByDesc(function($hackathon)
+        {
+            return  $hackathon->voteCountNormalized();
+        });
+    }
+
     public function refresh()
     {
         $s = SkyScanner::getCheapest($this->from);

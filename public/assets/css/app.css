@@ -28852,6 +28852,23 @@ h3 {
 label {
   color: white !important;
 }
+hr {
+  margin: 15px 0;
+}
+.no-margin {
+  margin: 0 0 0 0;
+}
+.centered {
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  font-size: 1.5rem;
+}
+.smaller {
+  font-size: smaller;
+}
 /**
  * selectize.css (v0.12.1)
  * Copyright (c) 2013–2015 Brian Reavis & contributors

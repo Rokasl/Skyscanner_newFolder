@@ -1,3 +1,7 @@
+<!--
+    <p class="no-margin">{{ $flight->voteCountNormalized() }}</p>
+    <p class="no-margin">{{ $flight->skyScannerUrl() }}</p>
+-->
 <div class="row result mb15" data-flight="{{ $flight->id }}">
     <div class="col-md-1">
         <button type="button"
@@ -5,25 +9,28 @@
                 class="btn btn-success btn-block"
                 data-upvote="{{ $flight->id }}">
             <i class="fa fa-thumbs-up"></i>
-            {{ $flight->votes()->whereType(1)->count() }}
+        </button>
+        <button type="button" id="testBtnDown" class="btn btn-danger btn-block" {{ $flight->votes()->where('user_id',  \Cookie::get('uuid'))->count() > 0 ? 'disabled="disabled"' : '' }} data-downvote="{{ $flight->id }}">
+            <i class="fa fa-thumbs-down"></i>
         </button>
     </div>
     <div class="col-md-3">
-        <p>{{ $flight->to }}</p>
+        <p class="centered">{{ $flight->to }}
+            <br> <span class="smaller">{{ $flight->voteCountNormalized() }} votes</span></p>
     </div>
 
     <div class="col-md-5">
-        <p>{{ $flight->dateFrom->toFormattedDateString() }} - {{ $flight->dateTo->toFormattedDateString() }} ({{ $flight->dateFrom->diffForHumans() }} ) </p>
+        <p class="centered">{{ $flight->dateFrom->toFormattedDateString() }} - {{ $flight->dateTo->toFormattedDateString() }}
+        <br> <span class="smaller">{{ $flight->dateFrom->diffForHumans() }}</span></p>
     </div>
 
-    <div class="col-md-2">
-        <p>{{ $flight->price }}</p>
-    </div>
     <div class="col-md-1">
-        <button type="button" id="testBtnDown" class="btn btn-danger btn-block" data-downvote="{{ $flight->id }}">
-            <i class="fa fa-thumbs-down"></i>
-            {{ $flight->votes()->whereType(0)->count() }}
-            </button>
+        <p class="centered">£{{ $flight->price }}</p>
     </div>
+    <div class="col-md-2">
+        <p class="centered"><a href="{{ $flight->skyScannerUrl() }}" class="btn btn-system btn-block" target="_blank"> Find Similar!</a></p>
 
+    </div>
 </div>
+
+<hr>

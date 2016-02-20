@@ -15,15 +15,16 @@ class AddUUIDCookie
      */
     public function handle($request, Closure $next)
     {
-        if($request->hasCookie('uuid'))
+        if(\Cookie::has('uuid'))
         {
             return $next($request);
         }
         else
         {
             $uuid = \Uuid::generate();
+
             $response = $next($request);
-            return $response->withCookie(cookie()->forever('uuid', $uuid));
+            return $response->withCookie(\Cookie::forever('uuid', $uuid->__toString()));
         }
     }
 }

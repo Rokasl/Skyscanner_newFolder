@@ -93,7 +93,7 @@
                         </div>
                     </div>
                      <div class="panel-body">
-                      <div class="panel-body comments" id="chat">
+                      <div class="comments" id="chat" style="height:200px; overflow:auto;">
                           @foreach($comments as $comment)
                               <p>{{$comment->text}}</p>
                               <hr>
@@ -102,10 +102,9 @@
                        <div class="panel-body">
                            <?= BootForm::open()->post()->action(action('CommentsController@store'))->id('comments__create-form') ?>
                                {!! BootForm::hidden('group_id')->value($data->id) !!}
-                               {!! BootForm::text('Message', 'text')->id('comment-input') !!}
+                               {!! BootForm::text('Message', 'text')->id('comment-input')->autocomplete("off") !!}
                            <?= Bootform::close() ?>
                        </div>
-
 
                      </div>
                 </div>
@@ -161,11 +160,22 @@
                 var a = document.getElementById("comment-input");
                 a.value = "";
                 $('#'+myVariable).load(document.URL +' #'+myVariable);
-
             }
         });
 
-    })
+    });
+
+    var objDiv = document.getElementById("chat");
+    objDiv.scrollTop = objDiv.scrollHeight;
+
+//    function autoRefresh_div()
+//    {
+//        var myVariable = document.querySelector('.comments').id;
+//        $('#'+myVariable).load(document.URL +' #'+myVariable);
+//        var objDiv = document.getElementById("chat");
+//        objDiv.scrollTop = objDiv.scrollHeight;
+//    }
+//    setInterval('autoRefresh_div()', 5000);
 
 
 </script>

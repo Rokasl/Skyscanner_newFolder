@@ -18,7 +18,6 @@ class CreateGroupsTable extends Migration
             $table->string('name');
             $table->string('public_id');
             $table->string('from');
-            $table->string('to');
 
             $table->timestamps();
         });

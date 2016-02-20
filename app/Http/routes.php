@@ -22,7 +22,10 @@
 |
 */
 Route::resource('/', 'IndexController');
+Route::resource('/result', 'ResultController');
 
 Route::group(['middleware' => ['web']], function () {
     //
 });
+
+Route::post('/api/add-vote', 'ApiController@addVoteForFlight');

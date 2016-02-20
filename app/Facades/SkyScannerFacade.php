@@ -29,9 +29,11 @@ class SkyScannerFacade
 	}
 
 
-	public function getCheapest($from, $to) {
-		$res = $this->client->get('http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/GB/GBP/en-GB/LON/UK/anytime/anytime?apiKey=' .$this->apiKey, [
+	public function getCheapest($from) {
+		$res = $this->client->get('http://partners.api.skyscanner.net/apiservices/browsequotes/v1.0/GB/GBP/en-GB/'. $from .'/anywhere/anytime/anytime?apiKey=' .$this->apiKey, [
 		]);
+
+		return json_decode($res->getBody());
 	}
 
 

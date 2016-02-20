@@ -206,6 +206,8 @@ return [
 
         'BootForm' => 'AdamWathan\BootForms\Facades\BootForm',
         'SkyScanner' => App\Facades\SkyScanner::class,
+        'Uuid' => Webpatser\Uuid\Uuid::class,
+
     ],
 
 ];

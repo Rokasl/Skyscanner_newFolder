@@ -3,7 +3,7 @@
         <button type="button"
                 id="testBtn"
                 class="btn btn-success btn-block"
-                data-loading-text=" ... ">
+                data-upvote="{{ $flight->id }}">
             <i class="fa fa-thumbs-up"></i>
             {{ $flight->votes()->whereType(1)->count() }}
         </button>
@@ -20,7 +20,7 @@
         <p>{{ $flight->price }}</p>
     </div>
     <div class="col-md-1">
-        <button type="button" id="testBtnDown" class="btn btn-danger btn-block" data-loading-text=" ... ">
+        <button type="button" id="testBtnDown" class="btn btn-danger btn-block" data-downvote="{{ $flight->id }}">
             <i class="fa fa-thumbs-down"></i>
             {{ $flight->votes()->whereType(0)->count() }}
             </button>

@@ -28,13 +28,14 @@ class CommentsController extends Controller
 //
 //        return redirect()->back();
 
-        $data = $request->except( '_token');
+            $data = $request->except('_token');
 
             $COMMENT = new Comment();
 
-             $COMMENT->fill( $data );
+            $COMMENT->fill($data);
 
-             $COMMENT->save();
+            $COMMENT->save();
+
         return redirect()->back();
     }
 

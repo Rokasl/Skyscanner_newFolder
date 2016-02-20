@@ -72,17 +72,16 @@
                         </div>
                     </div>
                      <div class="panel-body">
-                      <div class="panel-body">
+                      <div class="panel-body comments" id="chat">
                           @foreach($comments as $comment)
                               <p>{{$comment->text}}</p>
                               <hr>
                           @endforeach
                       </div>
                        <div class="panel-body">
-                           <?= BootForm::open()->post()->action(action('CommentsController@store'))->id('chat') ?>
+                           <?= BootForm::open()->post()->action(action('CommentsController@store'))->id('comments__create-form') ?>
                                {!! BootForm::hidden('group_id')->value($data->id) !!}
-                               {!! BootForm::text('Message', 'text')->id('text') !!}
-                               {!! BootForm::submit('Submit!', 'btn btn-primary btn-block')->id('submit') !!}
+                               {!! BootForm::text('Message', 'text')->id('comment-input') !!}
                            <?= Bootform::close() ?>
                        </div>
 
@@ -96,7 +95,7 @@
 
 @endsection
 
-@section('footer')
+@section('javascript')
 <script>
     $('#testBtn').click(function () {
         var cnt=4;
@@ -123,7 +122,30 @@
     });
 </script>
 
+<script>
+    /* Hit enter to submit comment */
+    $('#comments__create-form').on('submit', function(e){
+        e.preventDefault();
+        var myVariable = document.querySelector('.comments').id;
+        var form = $(this);
+        var post_url = form.attr('action');
+        var post_data = form.serialize();
+        $.ajax({
+            type: 'POST',
+            url: post_url,
+            data: post_data,
+            success: function() {
+                var a = document.getElementById("comment-input");
+                a.value = "";
+                $('#'+myVariable).load(document.URL +' #'+myVariable);
 
+            }
+        });
+
+    })
+
+
+</script>
 
 
 @endsection

@@ -112,12 +112,12 @@
                                 <hr>
                             @endforeach
                         </div>
-                        <div class="panel-body">
+
                             <?= BootForm::open()->post()->action(action('CommentsController@store'))->id('comments__create-form') ?>
                             {!! BootForm::hidden('group_id')->value($data->id) !!}
-                            {!! BootForm::text('Message', 'text')->id('comment-input')->autocomplete("off") !!}
+                            {!! BootForm::text('', 'text')->id('comment-input')->autocomplete("off") -> placeholder("Please enter message") !!}
                             <?= Bootform::close() ?>
-                        </div>
+
 
                     </div>
                 </div>

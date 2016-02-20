@@ -56,12 +56,68 @@ $('[data-upvote]').on('click', function () {
         data: {
             flight_id: $(this).attr('data-upvote'),
         },
+        success: function(data) { // 200 Status Header
+            document.dispatchEvent(new CustomEvent('updateView'));
+        },
+        error: function(data) { // 500 Status Header
+
+            console.log(data.status);
+            if (data.status == 200) {
+                document.dispatchEvent(new CustomEvent('updateView'));
+            } else {
+
+                console.log('error');
+                alert('Woops, you already voted for this');
+            }
+        },
+    });
+});
+
+
+$('[data-downvote]').on('click', function () {
+    $.ajax({
+        url: '/api/add-vote',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            flight_id: $(this).attr('data-downvote'),
+            negative: $(this).attr('data-downvote'),
+        },
+        success: function(data) { // 200 Status Header
+        },
+        error: function(data) { // 500 Status Header
+
+            if (data.status == 200) {
+                document.dispatchEvent(new CustomEvent('updateView'));
+            } else {
+
+                console.log('error');
+                alert('Woops, you already voted for this');
+            }
+
+        },
+    });
+});
+
+
+document.addEventListener('updateView', updateView, false);
+
+
+function updateView()
+{
+    $.ajax({
+        url: '/api/refresh',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            pid: $('[data-group]').attr('data-group'),
+        },
         error: function () {
-            console.log('error');
         },
         success: function (res) {
 
-            console.log('success');
+            console.log(res);
+            $('#body').empty().prepend((res.html));
         }
     });
-});
+}

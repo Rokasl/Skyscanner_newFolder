@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+    <div data-group="{{ $data->public_id }}"></div>
     <div class="container mt30">
 
         <div class="row">
@@ -19,7 +20,7 @@
                     <div class="panel-body">
 
 
-                        <div class="panel-body">
+                        <div class="panel-body" id="body">
 
                             <div class="row result mb15">
                                 <div class="col-md-1">

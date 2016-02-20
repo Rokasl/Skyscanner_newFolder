@@ -27,7 +27,7 @@ Route::get('/s/{id}', 'IndexController@showGroup');
 Route::resource('/result', 'ResultController');
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::post('/comment{group_id}', 'CommentsController@store');
 });
 
 Route::post('/api/add-vote', 'ApiController@addVoteForFlight');

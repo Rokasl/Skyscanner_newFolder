@@ -9,6 +9,9 @@ class Comment extends Model
     protected $table = 'comments';
     protected $connection = "mysql";
 
+    protected $fillable = [
+        'name', 'text',
+    ];
 
     public function group()
     {

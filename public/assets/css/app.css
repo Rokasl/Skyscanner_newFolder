@@ -24716,7 +24716,7 @@ body.timeline-page .panel-clone {
   color: #626262;
 }
 .admin-form .section {
-  margin-bottom: 22px;
+  margin-bottom: 10px;
 }
 /*==================================================================
   Browser Styling Reset
@@ -28819,7 +28819,7 @@ audio {
 .admin-form .gui-input[disabled],
 .admin-form .gui-textarea[disabled],
 .admin-form .select > select[disabled],
-.admin-form .select-multiple select[disabled],
+.admin-form .elect-multiple select[disabled],
 .admin-form .gui-input[disabled] ~ .input-footer,
 .admin-form .file .gui-file[disabled] + .gui-input,
 .admin-form .file .gui-file[disabled]:hover + .gui-input,

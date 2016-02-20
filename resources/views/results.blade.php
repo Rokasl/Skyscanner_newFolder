@@ -21,7 +21,7 @@
                     <div class="panel-body">
 
 
-                        <div class="panel-body" >
+                        <div class="panel-body">
 
                             <div class="row result mb15">
                                 <div class="col-md-1">
@@ -75,9 +75,12 @@
                     </div>
                     <div class="panel-body">
 
-                        <p>You have searched for flights from <b>{{ $data->from }}</b> airport, we have found <b> {{ $data->flights()->count() }}</b> flights from this destination. </p>
+                        <p>You have searched for flights from <b>{{ $data->from }}</b> airport, we have found
+                            <b> {{ $data->flights()->count() }}</b> flights from this destination. </p>
 
-                        <p>Cheapest flight cost <b>£{{ $data->flights()->orderBy('price', 'asc')->first()->price }}</b> and most expensive one costs <b>£{{ $data->flights()->orderBy('price', 'desc')->first()->price }}.</b></p>
+                        <p>Cheapest flight cost <b>£{{ $data->flights()->orderBy('price', 'asc')->first()->price }}</b>
+                            and most expensive one costs
+                            <b>£{{ $data->flights()->orderBy('price', 'desc')->first()->price }}.</b></p>
 
                         <p>This board was created <b>{{ $data->created_at->diffForHumans() }}</b></p>
 
@@ -93,24 +96,23 @@
                             <h3> Chat </h3>
                         </div>
                     </div>
-                     <div class="panel-body">
-                      <div class="comments" id="chat" style="height:200px; overflow:auto;">
-                          @foreach($comments as $comment)
-                              <p>{{$comment->text}}</p>
-                              <hr>
-                          @endforeach
-                      </div>
-                       <div class="panel-body">
-                           <?= BootForm::open()->post()->action(action('CommentsController@store'))->id('comments__create-form') ?>
-                               {!! BootForm::hidden('group_id')->value($data->id) !!}
-                               {!! BootForm::text('Message', 'text')->id('comment-input')->autocomplete("off") !!}
-                           <?= Bootform::close() ?>
-                       </div>
+                    <div class="panel-body">
+                        <div class="comments" id="chat" style="height:200px; overflow:auto;">
+                            @foreach($comments as $comment)
+                                <p>{{$comment->text}}</p>
+                                <hr>
+                            @endforeach
+                        </div>
 
-                     </div>
+                        <?= BootForm::open()->post()->action(action('CommentsController@store'))->id('comments__create-form') ?>
+                        {!! BootForm::hidden('group_id')->value($data->id) !!}
+                        {!! BootForm::text('', 'text')->id('comment-input')->autocomplete("off") -> placeholder("Send a message") !!}
+                        <?= Bootform::close() ?>
+
+
+                    </div>
                 </div>
             </div>
-
 
 
         </div>
@@ -119,67 +121,67 @@
 @endsection
 
 @section('javascript')
-<script>
-    $('#testBtn').click(function () {
-        var cnt=4;
-        var btn = $(this);
-        btn.button('loading');
-        setTimeout(function () {
-            cnt++;
-            btn.button('reset');
-            btn.text('  ' + cnt);
-        }, 1000);
-    });
-
-    $('#testBtnDown').click(function () {
-        var cnt=4;
-        var btn = $(this);
-        btn.button('loading');
-        setTimeout(function () {
-            if (cnt > 0) {
-                cnt--;
-            }
-            btn.button('reset');
-            btn.text('  ' + cnt);
-        }, 1000);
-    });
-</script>
-
-<script>
-    /* Hit enter to submit comment */
-    $('#comments__create-form').on('submit', function(e){
-        e.preventDefault();
-        var myVariable = document.querySelector('.comments').id;
-        var form = $(this);
-        var post_url = form.attr('action');
-        var post_data = form.serialize();
-        $.ajax({
-            type: 'POST',
-            url: post_url,
-            data: post_data,
-            success: function() {
-                var a = document.getElementById("comment-input");
-                a.value = "";
-                $('#'+myVariable).load(document.URL +' #'+myVariable);
-            }
+    <script>
+        $('#testBtn').click(function () {
+            var cnt = 4;
+            var btn = $(this);
+            btn.button('loading');
+            setTimeout(function () {
+                cnt++;
+                btn.button('reset');
+                btn.text('  ' + cnt);
+            }, 1000);
         });
 
-    });
+        $('#testBtnDown').click(function () {
+            var cnt = 4;
+            var btn = $(this);
+            btn.button('loading');
+            setTimeout(function () {
+                if (cnt > 0) {
+                    cnt--;
+                }
+                btn.button('reset');
+                btn.text('  ' + cnt);
+            }, 1000);
+        });
+    </script>
 
-    var objDiv = document.getElementById("chat");
-    objDiv.scrollTop = objDiv.scrollHeight;
+    <script>
+        /* Hit enter to submit comment */
+        $('#comments__create-form').on('submit', function (e) {
+            e.preventDefault();
+            var myVariable = document.querySelector('.comments').id;
+            var form = $(this);
+            var post_url = form.attr('action');
+            var post_data = form.serialize();
+            $.ajax({
+                type: 'POST',
+                url: post_url,
+                data: post_data,
+                success: function () {
+                    var a = document.getElementById("comment-input");
+                    a.value = "";
+                    $('#' + myVariable).load(document.URL + ' #' + myVariable);
+                }
+            });
 
-//    function autoRefresh_div()
-//    {
-//        var myVariable = document.querySelector('.comments').id;
-//        $('#'+myVariable).load(document.URL +' #'+myVariable);
-//        var objDiv = document.getElementById("chat");
-//        objDiv.scrollTop = objDiv.scrollHeight;
-//    }
-//    setInterval('autoRefresh_div()', 5000);
+        });
+
+        var objDiv = document.getElementById("chat");
+        objDiv.scrollTop = objDiv.scrollHeight;
+
+        //    function autoRefresh_div()
+        //    {
+        //        var myVariable = document.querySelector('.comments').id;
+        //        $('#'+myVariable).load(document.URL +' #'+myVariable);
+        //        var objDiv = document.getElementById("chat");
+        //        objDiv.scrollTop = objDiv.scrollHeight;
+        //    }
+        //    setInterval('autoRefresh_div()', 5000);
 
 
-</script>
+    </script>
 
 
 @endsection

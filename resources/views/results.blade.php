@@ -52,11 +52,25 @@
 
                 </div>
 
+
             </div>
 
             <div class="col-md-3">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <h3> Chat </h3>
+                        </div>
+                    </div>
+                     <div class="panel-body">
+                      <div class="panel-body">
+                          MESSAGE
+                      </div>
 
-            </div>
+
+                     </div>
+                </div>
+                </div>
 
         </div>
     </div>

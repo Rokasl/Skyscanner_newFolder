@@ -202,6 +202,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
+        'BootForm' => 'AdamWathan\BootForms\Facades\BootForm',
+        'SkyScanner' => App\Facades\SkyScanner::class,
     ],
 
 ];

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Facades\SkyScannerFacade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('skyscanner.utils', function () {
+            $api_key = 'ah157133207656443122789513994939';
+
+            return new SkyScannerFacade($api_key);
+        });
     }
 }

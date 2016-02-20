@@ -91,7 +91,6 @@ class IndexController extends Controller
     public function showGroup($id)
     {
 
-
         $group = Group::wherePublicId($id)->first();
         $comments = $group->comments()->get();
         return view('results', [

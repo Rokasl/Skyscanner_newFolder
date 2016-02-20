@@ -20,7 +20,7 @@
                     <div class="panel-body">
 
 
-                        <div class="panel-body" id="body">
+                        <div class="panel-body" >
 
                             <div class="row result mb15">
                                 <div class="col-md-1">
@@ -45,13 +45,12 @@
 
                         </div>
 
-                        <div class="panel-body">
+                        <div class="panel-body" id="body">
 
 
                             @foreach($data->getFlightsByVoteCount() as $flight)
 
                                 @include('partials.result-row')
-                                <hr>
                             @endforeach
 
 
@@ -80,6 +79,8 @@
                         <p>Cheapest flight cost <b>£{{ $data->flights()->orderBy('price', 'asc')->first()->price }}</b> and most expensive one costs <b>£{{ $data->flights()->orderBy('price', 'desc')->first()->price }}.</b></p>
 
                         <p>This board was created <b>{{ $data->created_at->diffForHumans() }}</b></p>
+
+                        <a class="btn btn-danger btn-block">Refresh Data!</a>
                     </div>
                 </div>
             </div>

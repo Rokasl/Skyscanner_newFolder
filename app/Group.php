@@ -15,7 +15,7 @@ class Group extends Model
 
     public function  getFlightsByVoteCount()
     {
-        return $this->flights->sortBy(function($hackathon)
+        return $this->flights->sortByDesc(function($hackathon)
         {
             return  $hackathon->voteCountNormalized();
         });

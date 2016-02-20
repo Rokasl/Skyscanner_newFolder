@@ -16,11 +16,11 @@ class ApiController extends Controller
 
     public function addVoteForFlight(Request $request)
     {
-        if (Vote::where('user_id', \Cookie::get('uuid')->__toString())->where('flight_id', $request->get('flight_id'))->count() < 1 ) {
+        if (Vote::where('user_id', \Cookie::get('uuid'))->where('flight_id', $request->get('flight_id'))->count() < 1 ) {
 
             $vote =  new Vote();
             $vote->flight_id = $request->get('flight_id');
-            $vote->user_id = \Cookie::get('uuid')->__toString();
+            $vote->user_id = \Cookie::get('uuid');
             $vote->type = $request->has('negative') ? 1:0;
             $vote->save();
         } else {

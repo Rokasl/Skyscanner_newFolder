@@ -10,9 +10,13 @@
                 data-upvote="{{ $flight->id }}">
             <i class="fa fa-thumbs-up"></i>
         </button>
+        <button type="button" id="testBtnDown" class="btn btn-danger btn-block" {{ $flight->votes()->where('user_id',  \Cookie::get('uuid'))->count() > 0 ? 'disabled="disabled"' : '' }} data-downvote="{{ $flight->id }}">
+            <i class="fa fa-thumbs-down"></i>
+        </button>
     </div>
     <div class="col-md-3">
-        <p class="centered">{{ $flight->to }}</p>
+        <p class="centered">{{ $flight->to }}
+            <br> <span class="smaller">{{ $flight->voteCountNormalized() }} votes</span></p>
     </div>
 
     <div class="col-md-5">
@@ -20,12 +24,13 @@
         <br> <span class="smaller">{{ $flight->dateFrom->diffForHumans() }}</span></p>
     </div>
 
-    <div class="col-md-2">
-        <p class="centered">{{ $flight->price }}</p>
-    </div>
     <div class="col-md-1">
-        <button type="button" id="testBtnDown" class="btn btn-danger btn-block" data-downvote="{{ $flight->id }}">
-            <i class="fa fa-thumbs-down"></i>
-            </button>
+        <p class="centered">£{{ $flight->price }}</p>
+    </div>
+    <div class="col-md-2">
+        <p class="centered"><a href="{{ $flight->skyScannerUrl() }}" class="btn btn-system btn-block" target="_blank"> Find Similar!</a></p>
+
     </div>
 </div>
+
+<hr>

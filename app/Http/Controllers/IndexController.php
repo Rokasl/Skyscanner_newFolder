@@ -47,7 +47,7 @@ class IndexController extends Controller
     {
         $group = new Group();
 
-        $group->public_id = strtoupper(str_random(5));
+        $group->public_id = strtoupper(str_random(2 ));
         $group->name = $request->get('name', 'lol');
         $group->from = str_replace('-sky',  '', $request->get('from'));
         $group->save();

@@ -149,30 +149,32 @@
             var form = $(this);
             var post_url = form.attr('action');
             var post_data = form.serialize();
+            var a = document.getElementById("comment-input");
+            a.value = "";
+            $('#' + myVariable).load(document.URL + ' #' + myVariable);
             $.ajax({
                 type: 'POST',
                 url: post_url,
                 data: post_data,
                 success: function () {
-                    var a = document.getElementById("comment-input");
-                    a.value = "";
-                    $('#' + myVariable).load(document.URL + ' #' + myVariable);
                 }
+
             });
+
 
         });
 
         var objDiv = document.getElementById("chat");
         objDiv.scrollTop = objDiv.scrollHeight;
 
-        //    function autoRefresh_div()
-        //    {
-        //        var myVariable = document.querySelector('.comments').id;
-        //        $('#'+myVariable).load(document.URL +' #'+myVariable);
-        //        var objDiv = document.getElementById("chat");
-        //        objDiv.scrollTop = objDiv.scrollHeight;
-        //    }
-        //    setInterval('autoRefresh_div()', 5000);
+            function autoRefresh_div()
+            {
+                var myVariable = document.querySelector('.comments').id;
+                $('#'+myVariable).load(document.URL +' #'+myVariable);
+                var objDiv = document.getElementById("chat");
+                objDiv.scrollTop = objDiv.scrollHeight;
+            }
+            setInterval('autoRefresh_div()', 2000);
 
 
     </script>

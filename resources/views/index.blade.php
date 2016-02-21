@@ -15,7 +15,7 @@
             <?= BootForm::open()->post()->action(action('IndexController@store')) ?>
 
 
-            <?= BootForm::select('', 'from')->class('remote-selector')->placeholder('Your City') ?>
+            <?= BootForm::select('', 'from')->class('remote-selector')->placeholder('Where are you flying from?') ?>
 
             {!! BootForm::submit('GO!', 'btn btn-primary btn-block') !!}
 

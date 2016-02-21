@@ -13,13 +13,22 @@
                     <div class="panel-heading">
                         <div class="panel-title">
                             <h3> Results
-                                <div style="float:right;"><a href="https://twitter.com/share"
-                                                             class="twitter-share-button" data-size="small">Tweet</a>
+                                <div style="float:right;">
+                                    <ul>
+                                        <li>
+                                            <a href="https://twitter.com/share"
+                                               class="twitter-share-button" data-size="small">Tweet</a>
+                                        </li>
+                                        <li>
+                                            <div class="fb-share-button"
+                                                 data-href="{{\Request::url()}}"
+                                                 data-layout="button_count">
+                                            </div>
+                                        </li>
+                                    </ul>
 
-                                    <div class="fb-share-button"
-                                         data-href="{{\Request::url()}}"
-                                         data-layout="button_count">
-                                    </div>
+
+
                                 </div>
 
                             </h3>

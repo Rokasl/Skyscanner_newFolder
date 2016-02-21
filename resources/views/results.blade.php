@@ -101,6 +101,7 @@
                             <b>£{{ $data->flights()->orderBy('price', 'desc')->first()->price }}.</b></p>
 
                         <p>This board was created <b>{{ $data->created_at->diffForHumans() }}</b></p>
+                        <p>Refreshed: <b>{{ $data->created_at->eq($data->updated_at) ? 'Never' : $data->updated_at->diffForHumans() }}</b></p>
 
                         <a class="btn btn-danger btn-block">Refresh Data!</a>
                     </div>

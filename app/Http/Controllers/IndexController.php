@@ -43,7 +43,7 @@ class IndexController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\IndexRequest $request)
     {
         $group = new Group();
 

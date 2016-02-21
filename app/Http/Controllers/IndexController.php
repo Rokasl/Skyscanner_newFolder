@@ -99,7 +99,7 @@ class IndexController extends Controller
             $group->refresh();
         }
 
-        $comments = $group->comments()->get();
+        $comments = $group->comments()->orderBy('id', 'desc')->get();
         return view('results', [
             'data' => $group,
             'comments' => $comments,

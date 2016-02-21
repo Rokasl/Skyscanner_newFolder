@@ -164,20 +164,16 @@
 
         });
 
-        function scrollBottom(){
-            if ($('#chat p:last-child').lenght) {
-                $('#chat p').last().goTo();
-            }
-        }
+
+
 
             function autoRefresh_div()
             {
                 var myVariable = document.querySelector('.comments').id;
                 $('#'+myVariable).load(document.URL +' #'+myVariable);
-                scrollBottom();
             }
             setInterval('autoRefresh_div()', 2000);
-        scrollBottom();
+
 
     </script>
 

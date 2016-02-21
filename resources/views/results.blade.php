@@ -164,18 +164,20 @@
 
         });
 
-        var objDiv = document.getElementById("chat");
-        objDiv.scrollTop = objDiv.scrollHeight;
+        function scrollBottom(){
+            var objDiv = document.getElementById("chat");
+            objDiv.scrollTop = objDiv.scrollHeight;
+            console.log("hi");
+        }
 
             function autoRefresh_div()
             {
                 var myVariable = document.querySelector('.comments').id;
                 $('#'+myVariable).load(document.URL +' #'+myVariable);
-                var objDiv = document.getElementById("chat");
-                objDiv.scrollTop = objDiv.scrollHeight;
+                scrollBottom();
             }
             setInterval('autoRefresh_div()', 2000);
-
+        scrollBottom();
 
     </script>
 

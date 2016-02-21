@@ -1,6 +1,8 @@
 # Skyscanner challenge
 ## Group flying app
 
+## URL
+http://legitflight.sakalauskas.co.uk/ or http://legitflight.com/ 
 
 ## Motivation
 

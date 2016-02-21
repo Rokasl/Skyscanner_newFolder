@@ -17,7 +17,7 @@
 
             <?= BootForm::select('', 'from')->class('remote-selector')->style('    height: 30px;')->placeholder('Where are you flying from?') ?>
 
-            {!! BootForm::submit('GO!', 'btn btn-sky btn-block') !!}
+            {!! BootForm::submit('GO!', 'btn btn-sky btn-block')->style('color:white;') !!}
 
             <?= Bootform::close() ?>
 

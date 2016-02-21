@@ -1,5 +1,15 @@
 
 
+(function($) {
+    $.fn.goTo = function () {
+        $('html, body').animate({
+            scrollTop: $(this).offset().top + 'px'
+        }, 'slow');
+        return this; // for chaining...
+    };
+})(jQuery);
+
+
 $(function () {
     $.ajaxSetup({
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
@@ -99,25 +109,28 @@ $(document).on('click', '[data-downvote]',  function () {
     });
 });
 
-
+setInterval(updateView,15000);
 document.addEventListener('updateView', updateView, false);
 
 
 function updateView()
 {
-    $.ajax({
-        url: '/api/refresh',
-        type: 'POST',
-        dataType: 'json',
-        data: {
-            pid: $('[data-group]').attr('data-group'),
-        },
-        error: function () {
-        },
-        success: function (res) {
+    if ($('[data-group]').length) {
 
-            console.log(res);
-            $('#body').empty().prepend((res.html));
-        }
-    });
+        $.ajax({
+            url: '/api/refresh',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                pid: $('[data-group]').attr('data-group'),
+            },
+            error: function () {
+            },
+            success: function (res) {
+
+                console.log(res);
+                $('#body').empty().prepend((res.html));
+            }
+        });
+    }
 }

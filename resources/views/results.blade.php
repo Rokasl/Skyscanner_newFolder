@@ -46,15 +46,15 @@
 
                                 </div>
                                 <div class="col-md-3">
-                                    <p>Destination</p>
+                                    <p class="header">Destination</p>
                                 </div>
 
                                 <div class="col-md-5">
-                                    <p>Date</p>
+                                    <p class="header">Date (Depart - Return)</p>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <p>Price</p>
+                                    <p class="header">Price </p>
                                 </div>
                                 <div class="col-md-1">
 

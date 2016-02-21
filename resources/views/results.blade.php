@@ -16,13 +16,13 @@
                                 <div style="float:right;">
                                     <ul>
                                         <li>
-                                            <a href="https://twitter.com/share"
+                                           <div style="margin-top:5px;"> <a href="https://twitter.com/share"
                                                class="twitter-share-button" data-size="small">Tweet</a>
-                                        </li>
-                                        <li>
+                                               </div>
                                             <div class="fb-share-button"
                                                  data-href="{{\Request::url()}}"
-                                                 data-layout="button_count">
+                                                 data-layout="button_count"
+                                                    style="z-index:10;">
                                             </div>
                                         </li>
                                     </ul>
@@ -167,7 +167,6 @@
         function scrollBottom(){
             var objDiv = document.getElementById("chat");
             objDiv.scrollTop = objDiv.scrollHeight;
-            console.log("hi");
         }
 
             function autoRefresh_div()

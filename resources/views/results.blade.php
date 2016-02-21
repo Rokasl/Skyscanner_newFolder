@@ -103,7 +103,7 @@
                         <p>This board was created <b>{{ $data->created_at->diffForHumans() }}</b></p>
                         <p>Refreshed: <b>{{ $data->created_at->eq($data->updated_at) ? 'Never' : $data->updated_at->diffForHumans() }}</b></p>
 
-                        <a class="btn btn-danger btn-block">Refresh Data!</a>
+                        <a href="?refresh=true" class="btn btn-danger btn-block">Refresh Data!</a>
                     </div>
                 </div>
             </div>
@@ -165,9 +165,9 @@
         });
 
         function scrollBottom(){
-            var objDiv = document.getElementById("chat");
-            objDiv.scrollTop = objDiv.scrollHeight;
-            console.log("hi");
+            if ($('#chat p:last-child').lenght) {
+                $('#chat p').last().goTo();
+            }
         }
 
             function autoRefresh_div()

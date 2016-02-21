@@ -22,6 +22,16 @@
 var nativeSplit=String.prototype.split,compliantExecNpcg=void 0===/()??/.exec("")[1];String.prototype.split=function(a,b){var c=this;if("[object RegExp]"!==Object.prototype.toString.call(a))return nativeSplit.call(c,a,b);var d,e,f,g,h=[],i=(a.ignoreCase?"i":"")+(a.multiline?"m":"")+(a.extended?"x":"")+(a.sticky?"y":""),j=0;for(a=new RegExp(a.source,i+"g"),c+="",compliantExecNpcg||(d=new RegExp("^"+a.source+"$(?!\\s)",i)),b=void 0===b?-1>>>0:b>>>0;(e=a.exec(c))&&(f=e.index+e[0].length,!(f>j&&(h.push(c.slice(j,e.index)),!compliantExecNpcg&&e.length>1&&e[0].replace(d,function(){for(var a=1;a<arguments.length-2;a++)void 0===arguments[a]&&(e[a]=void 0)}),e.length>1&&e.index<c.length&&Array.prototype.push.apply(h,e.slice(1)),g=e[0].length,j=f,h.length>=b)));)a.lastIndex===e.index&&a.lastIndex++;return j===c.length?(g||!a.test(""))&&h.push(""):h.push(c.slice(j)),h.length>b?h.slice(0,b):h};
 
 
+(function($) {
+    $.fn.goTo = function () {
+        $('html, body').animate({
+            scrollTop: $(this).offset().top + 'px'
+        }, 'slow');
+        return this; // for chaining...
+    };
+})(jQuery);
+
+
 $(function () {
     $.ajaxSetup({
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
@@ -121,26 +131,29 @@ $(document).on('click', '[data-downvote]',  function () {
     });
 });
 
-
+setInterval(updateView,15000);
 document.addEventListener('updateView', updateView, false);
 
 
 function updateView()
 {
-    $.ajax({
-        url: '/api/refresh',
-        type: 'POST',
-        dataType: 'json',
-        data: {
-            pid: $('[data-group]').attr('data-group'),
-        },
-        error: function () {
-        },
-        success: function (res) {
+    if ($('[data-group]').length) {
 
-            console.log(res);
-            $('#body').empty().prepend((res.html));
-        }
-    });
+        $.ajax({
+            url: '/api/refresh',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                pid: $('[data-group]').attr('data-group'),
+            },
+            error: function () {
+            },
+            success: function (res) {
+
+                console.log(res);
+                $('#body').empty().prepend((res.html));
+            }
+        });
+    }
 }
 //# sourceMappingURL=app.js.map

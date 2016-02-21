@@ -28840,8 +28840,8 @@ body {
 }
 h1,
 h3 {
-  color: #5be2ed;
-  font-family: 'Lato', sans-serif;
+  color: white;
+  font-family: 'Raleway', sans-serif;
 }
 h1 {
   font-size: 3em;
@@ -28852,7 +28852,7 @@ h3 {
   margin: 8px -5px;
 }
 label {
-  color: #5be2ed !important;
+  color: white !important;
 }
 hr {
   margin: 15px 0;
@@ -28882,6 +28882,66 @@ ul li {
   display: inline ;
   padding: 0;
   margin: 0;
+}
+.btn-sky {
+  color: white;
+  background-color: #29a8bb;
+}
+.btn-sky:hover,
+.btn-sky:focus,
+.btn-sky:active,
+.btn-sky.active,
+.open > .dropdown-toggle.btn-sky {
+  color: white;
+  background-color: #228c9c;
+  border-color: rgba(0, 0, 0, 0.05);
+}
+.btn-sky:active,
+.btn-sky.active,
+.open > .dropdown-toggle.btn-sky {
+  background-image: none;
+}
+.btn-sky.disabled,
+.btn-sky[disabled],
+fieldset[disabled] .btn-sky,
+.btn-sky.disabled:hover,
+.btn-sky[disabled]:hover,
+fieldset[disabled] .btn-sky:hover,
+.btn-sky.disabled:focus,
+.btn-sky[disabled]:focus,
+fieldset[disabled] .btn-sky:focus,
+.btn-sky.disabled:active,
+.btn-sky[disabled]:active,
+fieldset[disabled] .btn-sky:active,
+.btn-sky.disabled.active,
+.btn-sky[disabled].active,
+fieldset[disabled] .btn-sky.active {
+  background-color: #29a8bb;
+  border-color: #208291;
+}
+.btn-sky .badge {
+  color: #29a8bb;
+  background-color: white;
+}
+.btn-sky.light {
+  background-color: #31bdd2;
+}
+.btn-sky.light:hover,
+.btn-sky.light:focus,
+.btn-sky.light:active,
+.btn-sky.light.active,
+.open > .dropdown-toggle.btn-sky.light {
+  background-color: #2391a2;
+}
+.btn-sky.dark {
+  background-color: #2391a2;
+}
+.btn-sky.dark:hover,
+.btn-sky.dark:focus,
+.btn-sky.dark:active,
+.btn-sky.dark.active,
+.open > .dropdown-toggle.btn-sky.dark {
+  background-color: #1e7b89;
 }
 /**
  * selectize.css (v0.12.1)

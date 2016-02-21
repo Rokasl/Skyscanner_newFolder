@@ -4,8 +4,8 @@
 
     <?php use AdamWathan\BootForms\Facades\BootForm; ?>
 
-    <h1 class="text-center">Fly spontaneously</h1>
-    <h3 class="text-center">Choose your city</h3>
+    <h1 class="text-center mb15" style="margin-top: 8%;">Fly spontaneously</h1>
+    <h3 class="text-center" style="margin-bottom: 10%">Choose your city</h3>
 
 
     <div class="row">
@@ -15,9 +15,9 @@
             <?= BootForm::open()->post()->action(action('IndexController@store')) ?>
 
 
-            <?= BootForm::select('', 'from')->class('remote-selector')->placeholder('Where are you flying from?') ?>
+            <?= BootForm::select('', 'from')->class('remote-selector')->style('    height: 30px;')->placeholder('Where are you flying from?') ?>
 
-            {!! BootForm::submit('GO!', 'btn btn-primary btn-block') !!}
+            {!! BootForm::submit('GO!', 'btn btn-sky btn-block') !!}
 
             <?= Bootform::close() ?>
 

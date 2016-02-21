@@ -33,7 +33,8 @@ class ApiController extends Controller
 
     public function showDestinations(Request $request)
     {
-        return SkyScanner::destination($request->get('q'))->Places;
+
+        return SkyScanner::destination(strlen($request->get('q', 'u')) < 1 ? 'u' : $request->get('q', 'u'))->Places;
     }
 
     public function getResultsViewHtml(Request $request)

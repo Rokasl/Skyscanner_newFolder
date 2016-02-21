@@ -15,7 +15,7 @@
 
 	<link href="{{ asset('/assets/css/app.css') }}" rel="stylesheet">
 
-	<link href='https://fonts.googleapis.com/css?family=Lato:100,400,300,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
 	<!-- Fonts -->
 	<!-- DataTables CSS -->
 	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
